@@ -49,8 +49,8 @@ function Header(){
                         slideTog();
                     }
                 }>
-                <div className={`w-full h-1 bg-slate-500 rounded-full duration-200 group-hover:bg-slate-900 ${ tog ? 'absolute top-[17.5px] w-2/4 rotate-45' : '' }`}></div>
-                <div className={`w-full h-1 bg-slate-500 rounded-full duration-200 group-hover:bg-slate-900 ${ tog ? 'absolute top-[17.5px] w-2/4 -rotate-45' : '' }`}></div>
+                <div className={`w-full h-1 bg-slate-500 rounded-full duration-200 group-hover:bg-slate-900 ${ tog ? 'absolute top-[17.5px] w-3/5 rotate-45' : '' }`}></div>
+                <div className={`w-full h-1 bg-slate-500 rounded-full duration-200 group-hover:bg-slate-900 ${ tog ? 'absolute top-[17.5px] w-3/5 -rotate-45' : '' }`}></div>
               </div>
 
             <nav className={`
@@ -67,7 +67,7 @@ function Header(){
               items-center
               justify-center
               duration-300
-              ${ tog ? '-right-0' : '' }
+              ${ tog ? 'right-0' : '' }
               `}>
                 <ul className="
                   flex 
