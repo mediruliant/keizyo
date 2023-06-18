@@ -17,7 +17,7 @@ const NavItems = (props) => {
                m-0
                relative
                w-full
-               text-end
+               ${props.textAlign}
                overflow-hidden
                hover:text-white
                before:content-['']
