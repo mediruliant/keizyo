@@ -5,9 +5,9 @@ module.exports = {
     extend: {
       fontFamily: {
         'lexend-deca': 'lexend deca',
+        'poppins-bold': 'poppins bold',
       }
     },
   },
   plugins: [],
 }
-

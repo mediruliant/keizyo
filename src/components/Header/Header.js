@@ -1,12 +1,21 @@
 import React, { useEffect } from "react";
 import NavItems from "./NavItems";
 
-function Header(){
+function Header(props){
 
     const [tog, setTog] = React.useState(false)
     const [togScroll, setTogScroll] = React.useState(false)
 
     useEffect(()=>{
+
+        const togchild1 = document.querySelector('.togchild-1')
+        const togchild2 = document.querySelector('.togchild-2')
+        if( tog === true ){
+            togchild1.classList.add('w-6')
+            togchild2.classList.add('w-6')
+        } else {
+        }
+
         const handleScroll = () => {
             if( window.scrollY > 100 ){
                 setTogScroll(true)
@@ -31,14 +40,16 @@ function Header(){
         if( tog === true ){
             body.classList.add('overflow-hidden')
         }else{
-            body.classList.remove('overflow-hidden')
+            setTimeout(() => {
+                body.classList.remove('overflow-hidden')
+            }, 600);
         }
     })
     
     return(
-        <header className="w-screen h-16 flex items-center justify-between absolute top-0 z-[100]">
+        <header className={`w-screen h-16 flex items-center justify-between absolute ${props.ClassTop} z-[100]`}>
             <div className="logo mx-5">
-                <a href="/" className="text-2xl font-bold text-orange-600">Keizyo</a>
+                <a href="/" className="text-2xl font-bold text-orange-600">Medmed:)</a>
             </div>
 
             <div className="mx-10 hidden sm:block">
@@ -77,8 +88,8 @@ function Header(){
                         slideTog();
                     }
                 }>
-                <div className={`w-full h-1 bg-slate-500 rounded-full duration-200 group-hover:bg-slate-900 ${ tog ? 'absolute top-[17.5px] w-2/4 rotate-45' : '' }`}></div>
-                <div className={`w-full h-1 bg-slate-500 rounded-full duration-200 group-hover:bg-slate-900 ${ tog ? 'absolute top-[17.5px] w-2/4 -rotate-45' : '' }`}></div>
+                <div className={`togchild-1 w-full h-1 bg-slate-500 rounded-full duration-200 group-hover:bg-slate-900 ${ tog ? 'absolute top-[17.5px] rotate-45' : '' }`}></div>
+                <div className={`togchild-2 w-full h-1 bg-slate-500 rounded-full duration-200 group-hover:bg-slate-900 ${ tog ? 'absolute top-[17.5px] -rotate-45' : '' }`}></div>
               </div>
 
             <nav className={`
@@ -95,22 +106,57 @@ function Header(){
               items-center
               justify-center
               duration-300
-              ${ tog ? 'right-0' : '' }
-              `}>
+              ease-linear
+              ${ tog ? 'right-0' : 'delay-300 ease-in' }
+              `} onClick={slideTog}>
+
                 <ul className="
                   flex 
                   flex-col
                   text-4xl
                   w-4/5
                   ">
-                    <NavItems href='/' menu='Home' textAlign='text-end' inDelay={0.2} />
-                    <NavItems href='/about' menu='About' textAlign='text-end' inDelay={0.3} />
-                    <NavItems href='/projects' menu='Projects' textAlign='text-end' inDelay={0.4} />
-                    <NavItems href='/contact' menu='Contact' textAlign='text-end' inDelay={0.45} />
+                    <li className=" relative overflow-hidden">
+                        <div className={` relative -bottom-24
+                        duration-300 delay-[200ms]
+                        ${ tog ? '-translate-y-24' : 'delay-1000' }
+                        `}>
+                            <NavItems href='/' menu='Home' textAlign='text-end' />
+                        </div>
+                    </li>
+                    <li className=" relative overflow-hidden">
+                        <div className={` relative -bottom-24
+                        duration-300 delay-[250ms]
+                        ${ tog ? '-translate-y-24' : 'delay-1000' }
+                        `}>
+                            <NavItems href='/about' menu='About' textAlign='text-end' />
+                        </div>
+                    </li>
+                    <li className=" relative overflow-hidden">
+                        <div className={` relative -bottom-24
+                        duration-300 delay-[300ms]
+                        ${ tog ? '-translate-y-24' : 'delay-1000' }
+                        `}>
+                            <NavItems href='/projects' menu='Projects' textAlign='text-end' />
+                        </div>
+                    </li>
+                    
+                    <li className=" relative overflow-hidden">
+                        <div className={` relative -bottom-24
+                        duration-300 delay-[350ms]
+                        ${ tog ? '-translate-y-24' : 'delay-1000' }
+                        `}>
+                            <NavItems href='/contact' menu='Contact' textAlign='text-end' />
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </header>
     )
+}
+
+Header.defaultProps = {
+    ClassTop: 'top-0'
 }
 
 export default Header;

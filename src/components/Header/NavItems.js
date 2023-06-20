@@ -1,16 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
 
 const NavItems = (props) => {
-    const [slide, setSlide] = React.useState(false)
-    
-    const slideMenu = () => {
-        setSlide(!slide)
-    }
     
     return (
-        <li className="w-full flex justify-stretch overflow-hidden">
+        <div className="w-full flex justify-stretch overflow-hidden">
             <NavLink to={props.href} className={`
                py-1.5
                px-3
@@ -31,18 +25,13 @@ const NavItems = (props) => {
                before:hover:w-full
                before:duration-200
                duration-200
-            `} onClick={slideMenu}>
-                <motion.div 
-                  className=""
-                  initial={{ y: '100%', x: '10%' }}
-                  animate={{ y: '0%', x: '0%' }}
-                  exit={{y: '0%', x: '0%' }}
-                  transition={{ duration: 0.3, delay: props.inDelay }}
-                >
+            `} 
+            >
+                <div>
                     {props.menu}
-                </motion.div>
+                </div>
             </NavLink>
-        </li>
+        </div>
     )
 }
 
