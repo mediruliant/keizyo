@@ -11,7 +11,6 @@ const FloatImage1 = () => {
           if(offsetY > 200){
             parallaxDiv.style.height = 10 + offsetY/2 + 'px'
           }
-          console.log(offsetY)
         };
     
         window.addEventListener('scroll', handleScroll);
