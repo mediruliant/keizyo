@@ -1,17 +1,18 @@
 import React from "react";
+import MouseFollowingOnHover from "../../../components/mouseFollowing/mouseFollowing";
 
 const HeroHome = () => {
   React.useEffect(() => {
     const handleScroll = () => {
-      const parallaxDiv = document.getElementById('with-me');
+      const parallaxDiv = document.getElementById("with-me");
       const offsetY = window.pageYOffset;
-      parallaxDiv.style.rotate = 12 + offsetY/10 + 'deg';
-    };
+      parallaxDiv.style.rotate = 12 + offsetY / 10 + "deg";
+    }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (
@@ -29,13 +30,16 @@ const HeroHome = () => {
             <h1 className="font-extrabold md:font-bold font-sans lg:text-9xl md:text-8xl text-6xl">
               Crafting Beautiful Experiences for the Digital World
             </h1>
-            <p id="with-me" className="py-2 px-4 rounded-2xl bg-orange-600 text-white rotate-12 w-52 text-3xl font-semibold text-center my-5">
+            <p
+              id="with-me"
+              className="py-2 px-4 rounded-2xl bg-orange-600 text-white rotate-12 w-52 text-3xl font-semibold text-center my-5"
+            >
               With me'
             </p>
-            <h1
-              className="text-3xl md:text-4xl font-extrabold font-mono border-2 pl-20 py-2 hover:text-white hover:bg-black duration-300 ease-in-out relative group
-                                "
-            >
+            <h1 id="h1-container" className="text-3xl md:text-4xl font-extrabold font-mono border-2 pl-20 py-2 hover:text-white hover:bg-black duration-300 ease-in-out relative group">
+              <div id="img-on-hover" className="absolute right-3 z-10 bottom-0 scale-0 group-hover:scale-100">
+                <MouseFollowingOnHover />
+              </div>
               <a
                 href="/about"
                 className="absolute right-52 top-2 text-transparent group-hover:text-white flex items-center text-lg opacity-0 translate-x-96 group-hover:opacity-100 group-hover:translate-x-0 duration-500"
